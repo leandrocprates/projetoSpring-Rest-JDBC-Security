@@ -28,21 +28,34 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @ImportResource("/META-INF/Spring-DataSource.xml")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+        /*Inject configuracao do banco de dados lidos no arquivo Spring-DataSource.xml */
 	@Autowired
 	DataSource dataSource;
 
+        /* Inject os dados lidos no arquivo springdb.properties */
 	@Inject
 	Environment env;
         
 	private static String REALM = "MY_TEST_REALM";
 	private static final Logger logger = LogManager.getLogger(SecurityConfiguration.class);
 
+        /**
+         * Configura Usuario e Permissoes na Memoria. 
+         * @param auth
+         * @throws Exception 
+         */
 	@Autowired
 	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
 		// auth.inMemoryAuthentication().withUser("bill").password("abc123").roles("ADMIN");
 		// auth.inMemoryAuthentication().withUser("tom").password("abc123").roles("USER");
 	}
-
+        
+        
+        /**
+         * Funcao responsavel por configurar as Permissoes de acesso dos Usuario. 
+         * @param http
+         * @throws Exception 
+         */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		logger.debug("*****Start Service*****");
@@ -71,6 +84,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 
 	/*
+         * Funcao responsavel por configurar DataSource via codigo 
+         *
 	 * @Bean public DriverManagerDataSource dataSource() {
 	 * 
 	 * logger.debug("Banco de dados ; "+ env.getProperty("url")); logger.debug(
@@ -86,6 +101,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	 * driverManagerDataSource; }
 	 */
 
+        
+        /**
+         * Funcao responsavel por fazer Autenticacao de Usuarios no Banco de Dados
+         * @param auth
+         * @throws Exception 
+         */
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery(QueryUsuario.queryUserAuthentication()).authoritiesByUsernameQuery(QueryUsuario.queryUserAndProfileAuthentication());
