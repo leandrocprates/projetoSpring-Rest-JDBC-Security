@@ -1,4 +1,4 @@
-package br.com.peopleway.security;
+package br.com.springTeste.security;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

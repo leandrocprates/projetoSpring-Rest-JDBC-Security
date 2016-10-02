@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.peopleway.security;
+package br.com.springTeste.security;
 
 import lombok.Data;
 

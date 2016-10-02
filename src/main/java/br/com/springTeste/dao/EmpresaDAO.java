@@ -1,4 +1,4 @@
-package br.com.peopleway.dao;
+package br.com.springTeste.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 
-import br.com.peopleway.abstractdao.AbstractDAO;
-import br.com.peopleway.mapper.EmpresaMapper;
-import br.com.peopleway.model.EmpresaBean;
-import br.com.peopleway.query.QueryEmpresa;
+import br.com.springTeste.abstractdao.AbstractDAO;
+import br.com.springTeste.mapper.EmpresaMapper;
+import br.com.springTeste.model.EmpresaBean;
+import br.com.springTeste.query.QueryEmpresa;
 
 public class EmpresaDAO extends AbstractDAO<EmpresaBean>{
 

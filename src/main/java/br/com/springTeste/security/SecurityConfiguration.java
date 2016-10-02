@@ -1,4 +1,4 @@
-package br.com.peopleway.security;
+package br.com.springTeste.security;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
@@ -17,7 +17,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import br.com.peopleway.query.QueryUsuario;
+import br.com.springTeste.query.QueryUsuario;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

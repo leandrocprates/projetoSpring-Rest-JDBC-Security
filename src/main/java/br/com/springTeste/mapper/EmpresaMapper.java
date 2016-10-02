@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.peopleway.mapper;
+package br.com.springTeste.mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import br.com.peopleway.model.EmpresaBean;
+import br.com.springTeste.model.EmpresaBean;
 
 /**
  *

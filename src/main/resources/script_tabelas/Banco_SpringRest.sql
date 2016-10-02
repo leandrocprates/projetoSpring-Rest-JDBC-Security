@@ -43,9 +43,9 @@ CREATE TABLE IF NOT EXISTS `tb_empresa` (
 DELETE FROM `tb_empresa`;
 /*!40000 ALTER TABLE `tb_empresa` DISABLE KEYS */;
 INSERT INTO `tb_empresa` (`id`, `nomeApp`, `nome`, `cnpj`, `idioma`, `timezone`, `classificacao`, `isDeficiente`, `numeroLicensas`, `imagem`, `nomeAdministrador`, `emailAdministrador`, `passwordAdministrador`, `isAtivo`, `planoId`) VALUES
-	(20, 'EmpresaApp', 'EmpresaNome', '13256984', 'Portugues', 'pt/BR', 'Livre', 0, 10, 'C:/Users/lprates/Desktop/projeto/upload/linux.jpg', 'Leandro Prates', 'lprates2@peopleway.com.br', '123456', 1, 1),
-	(21, 'EmpresaApp2', 'EmpresaNome2', '13256984', 'Portugues', 'pt/BR', 'Livre', 0, 10, 'C:/Desktop/imagem.png', 'Leandro Prates', 'lprates@peopleway.com.br', '123456', 1, 1),
-	(23, 'EmpresaApp2', 'EmpresaNome2', '13256984', 'Portugues', 'pt/BR', 'Livre', 0, 10, 'C:/Users/lprates/Desktop/projeto/upload/linux.jpg', 'Leandro Prates', 'lprates@peopleway.com.br', '123456', 1, NULL);
+	(20, 'EmpresaApp', 'EmpresaNome', '13256984', 'Portugues', 'pt/BR', 'Livre', 0, 10, 'C:/Users/lprates/Desktop/projeto/upload/linux.jpg', 'Leandro Prates', 'lprates2@springTeste.com.br', '123456', 1, 1),
+	(21, 'EmpresaApp2', 'EmpresaNome2', '13256984', 'Portugues', 'pt/BR', 'Livre', 0, 10, 'C:/Desktop/imagem.png', 'Leandro Prates', 'lprates@springTeste.com.br', '123456', 1, 1),
+	(23, 'EmpresaApp2', 'EmpresaNome2', '13256984', 'Portugues', 'pt/BR', 'Livre', 0, 10, 'C:/Users/lprates/Desktop/projeto/upload/linux.jpg', 'Leandro Prates', 'lprates@springTeste.com.br', '123456', 1, NULL);
 /*!40000 ALTER TABLE `tb_empresa` ENABLE KEYS */;
 
 
@@ -89,8 +89,8 @@ CREATE TABLE IF NOT EXISTS `tb_usuario` (
 DELETE FROM `tb_usuario`;
 /*!40000 ALTER TABLE `tb_usuario` DISABLE KEYS */;
 INSERT INTO `tb_usuario` (`id`, `nome`, `email`, `password`, `qtdAtendimentosSimultaneos`, `isAtivo`, `perfilId`, `empresaId`) VALUES
-	(1, 'Leandro', 'lprates@peopleway.com.br', 'lprates', 5, 1, 1, 20),
-	(13, 'Leandro Prates', 'lprates3@peopleway.com.br', '123456', 26, 1, 1, 20);
+	(1, 'Leandro', 'lprates@springTeste.com.br', 'lprates', 5, 1, 1, 20),
+	(13, 'Leandro Prates', 'lprates3@springTeste.com.br', '123456', 26, 1, 1, 20);
 /*!40000 ALTER TABLE `tb_usuario` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

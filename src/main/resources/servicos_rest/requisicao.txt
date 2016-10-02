@@ -24,7 +24,7 @@ content-type : application/json
 "numeroLicensas":10,
 "imagem":"C:/Desktop/imagem.png",
 "nomeAdministrador":"Leandro Prates",
-"emailAdministrador":"lprates@peopleway.com.br",
+"emailAdministrador":"lprates@springTeste.com.br",
 "passwordAdministrador":"123456",
 "planoId":0,
 "deficiente":false,

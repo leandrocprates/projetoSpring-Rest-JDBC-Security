@@ -1,4 +1,4 @@
-package br.com.peopleway.configuration;
+package br.com.springTeste.configuration;
 
 import java.io.IOException;
 

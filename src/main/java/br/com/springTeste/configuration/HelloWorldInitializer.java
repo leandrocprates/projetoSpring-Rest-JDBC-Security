@@ -1,4 +1,4 @@
-package br.com.peopleway.configuration;
+package br.com.springTeste.configuration;
 
 import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;

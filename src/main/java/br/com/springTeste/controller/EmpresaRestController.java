@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.peopleway.controller;
+package br.com.springTeste.controller;
 
 
 import java.util.List;
@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.peopleway.dao.EmpresaDAO;
-import br.com.peopleway.model.EmpresaBean;
+import br.com.springTeste.dao.EmpresaDAO;
+import br.com.springTeste.model.EmpresaBean;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
