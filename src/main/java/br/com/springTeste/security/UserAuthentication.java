@@ -8,7 +8,7 @@ package br.com.springTeste.security;
 import lombok.Data;
 
 /**
- *
+ * Funcao utilizada como Bean com os dados do usuario autenticado. 
  * @author lprates
  */
 @Data
