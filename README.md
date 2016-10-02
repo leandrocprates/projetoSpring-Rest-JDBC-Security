@@ -49,13 +49,146 @@ public class EmpresaMapper implements RowMapper<EmpresaBean> {
 ```
 
 
+No pacote **br.com.springTeste.model** estao os Modelos que representam os dados das tabelas e serão utilizados para armazenar os dados selecionados. 
+
+
+
+No pacote **br.com.springTeste.query** estao as querys que serao executadas no banco de dados. Foram criadas funcoes static para que as querys sejam acessadas em qualquer classe. 
 
 
 
 
+As Autenticacoes aos serviços REST serão realizadas pelo Spring Security e serão configuradas no pacote **br.com.springTeste.security**.
+A classe **CustomBasicAuthenticationEntryPoint.java** configura uma resposta padrao no caso do usuario tentar uma autenticacao e nao for autorizado a acessar um recurso. 
+
+```javascript
+public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
+
+    @Override
+    public void commence(final HttpServletRequest request, 
+    		final HttpServletResponse response, 
+    		final AuthenticationException authException) throws IOException, ServletException {
+    	
+    	response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+    	response.addHeader("WWW-Authenticate", "Basic realm=" + getRealmName() + "");
+        
+        PrintWriter writer = response.getWriter();
+        writer.println("HTTP Status 401 : " + authException.getMessage());
+    }
+    
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        setRealmName("MY_TEST_REALM");
+        super.afterPropertiesSet();
+    }
+}
+```
+
+
+
+A classe **SecurityConfiguration.java** configura as permissoes de acesso de acordo com o perfil do Usuario. Faz a autenticacao do usuario no Banco de Dados . E ainda possui uma funcao chamada **public static UserAuthentication getPrincipal()** que retorna o usuario autenticado no Sistema com o seu Perfil de Acesso. 
 
 
 
 
+```javascript
+
+@Configuration
+@EnableWebSecurity
+@PropertySource("/META-INF/springdb.properties")
+@ImportResource("/META-INF/Spring-DataSource.xml")
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+	DataSource dataSource;
+
+	@Inject
+	Environment env;
+        
+	private static String REALM = "MY_TEST_REALM";
+	private static final Logger logger = LogManager.getLogger(SecurityConfiguration.class);
+
+	@Autowired
+	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
+		// auth.inMemoryAuthentication().withUser("bill").password("abc123").roles("ADMIN");
+		// auth.inMemoryAuthentication().withUser("tom").password("abc123").roles("USER");
+	}
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		logger.debug("*****Start Service*****");
+		http.csrf().disable().authorizeRequests()
+				.antMatchers("/user/**").access("hasRole('ROLE_ADMIN')")
+				.antMatchers("/login**").access("hasRole('ROLE_ADMIN')")
+				.antMatchers("/perfil**").access("hasRole('ROLE_ADMIN')")
+				.antMatchers("/usuario**").access("hasRole('ROLE_ADMIN')")
+				.antMatchers("/empresa**").access("hasRole('ROLE_ADMIN')")
+				.antMatchers("/client**").access("hasRole('ROLE_ADMIN')")
+				.antMatchers("/plano**").access("hasRole('ROLE_ADMIN')")
+				.antMatchers("/message**").access("hasRole('ROLE_ADMIN')")
+				.antMatchers("/teste**").access("hasRole('ROLE_ADMIN')").and().httpBasic().realmName(REALM)
+				.authenticationEntryPoint(getBasicAuthEntryPoint());
+
+	}
+
+	@Bean
+	public CustomBasicAuthenticationEntryPoint getBasicAuthEntryPoint() {
+		return new CustomBasicAuthenticationEntryPoint();
+	}
+
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+	}
+
+	/*
+	 * @Bean public DriverManagerDataSource dataSource() {
+	 * 
+	 * logger.debug("Banco de dados ; "+ env.getProperty("url")); logger.debug(
+	 * "Usuario : "+ env.getProperty("user")); logger.debug("Senha : "+
+	 * env.getProperty("password"));
+	 * 
+	 * DriverManagerDataSource driverManagerDataSource = new
+	 * DriverManagerDataSource();
+	 * driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+	 * driverManagerDataSource.setUrl(env.getProperty("url"));
+	 * driverManagerDataSource.setUsername(env.getProperty("user"));
+	 * driverManagerDataSource.setPassword(env.getProperty("password")); return
+	 * driverManagerDataSource; }
+	 */
+
+	@Autowired
+	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+		auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery(QueryUsuario.queryUserAuthentication()).authoritiesByUsernameQuery(QueryUsuario.queryUserAndProfileAuthentication());
+
+	}
+        
+        /**
+         * Retorna o Usuario autenticado no sistema
+         * @return 
+         */
+        public static UserAuthentication getPrincipal(){
+            
+            UserAuthentication userAuthentication = new UserAuthentication();
+            
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+            if ( authentication!= null ){
+                userAuthentication.setNome(authentication.getName());
+                userAuthentication.setPerfil(authentication.getAuthorities().toString());
+                userAuthentication.setAutenticado(authentication.isAuthenticated());
+                
+                logger.info(" Usuario autenticado : {} " , userAuthentication.getNome()  ); 
+                logger.info(" Authorities : {} " , userAuthentication.getPerfil()  ); 
+                logger.info(" isAuthenticated : {} " , userAuthentication.isAutenticado()  ); 
+            }
+            
+            return userAuthentication;
+            
+        }
+
+}
+
+```
 
 
