@@ -208,5 +208,49 @@ public class HelloWorldConfiguration {
 ```
 
 
+No pacote **br.com.springTeste.controller** ficam os serviços REST que serão chamados via interface ou qualquer client REST que queira utilizar.  A classe **EmpresaRestController.java** representa um modelo de Serviço REST com seus serviços utilizando a biblioteca do Spring. 
+
+
+Essa Classe possui os seguintes serviços : 
+
+1 - Servico de Busca de empresas Cadastradas: ( Method GET ) 
+
+URL :  http://localhost:8080/service-whatsac/empresa?limitInicial=0&limitFinal=20
+
+2 - Servico de Upload do LOGO para a Empresa : ( METHOD POST enctype="multipart/form-data" ) 
+
+URL :  http://localhost:8080/service-whatsac/empresa/12/upload
+
+3 - Serviço de Criacao de Empresa : ( Method POST  content-type : application/json ) 
+
+URL :  http://localhost:8080/service-whatsac/empresa
+
+ 
+{
+"id":null,
+"nomeApp":"EmpresaApp",
+"nome":"EmpresaNome",
+"cnpj":"13256984",
+"idioma":"Portugues",
+"timezone":"pt/BR",
+"classificacao":"Livre",
+"numeroLicensas":10,
+"imagem":"C:/Desktop/imagem.png",
+"nomeAdministrador":"Leandro Prates",
+"emailAdministrador":"lprates@springTeste.com.br",
+"passwordAdministrador":"123456",
+"planoId":0,
+"deficiente":false,
+"ativo":true
+}
+
+4 - Servico de Delete de Empresa : ( Method DELETE) 
+
+URL : http://localhost:8080/service-whatsac/empresa/1 
+
+
+
+
+
 
 
