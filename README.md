@@ -192,3 +192,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 ```
 
 
+
+O pacote **br.com.springTeste.configuration** faz a configuracao do **Spring MVC** por meio de anotacoes na classe **HelloWorldConfiguration.java**
+
+
+```javascript
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = "br.com.springTeste")
+public class HelloWorldConfiguration {
+	
+
+}
+
+```
+
+
+
+
