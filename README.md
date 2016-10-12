@@ -215,15 +215,15 @@ Essa Classe possui os seguintes serviços :
 
 1 - Servico de Busca de empresas Cadastradas: ( Method GET ) 
 
-URL :  http://localhost:8080/service-whatsac/empresa?limitInicial=0&limitFinal=20
+URL :  http://localhost:8080/service-rest/empresa?limitInicial=0&limitFinal=20
 
 2 - Servico de Upload do LOGO para a Empresa : ( METHOD POST enctype="multipart/form-data" ) 
 
-URL :  http://localhost:8080/service-whatsac/empresa/12/upload
+URL :  http://localhost:8080/service-rest/empresa/12/upload
 
 3 - Serviço de Criacao de Empresa : ( Method POST  content-type : application/json ) 
 
-URL :  http://localhost:8080/service-whatsac/empresa
+URL :  http://localhost:8080/service-rest/empresa
 
 ```json 
 {
@@ -248,7 +248,7 @@ URL :  http://localhost:8080/service-whatsac/empresa
 
 4 - Servico de Delete de Empresa : ( Method DELETE) 
 
-URL : http://localhost:8080/service-whatsac/empresa/1 
+URL : http://localhost:8080/service-rest/empresa/1 
 
 
 

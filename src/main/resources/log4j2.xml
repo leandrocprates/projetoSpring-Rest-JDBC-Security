@@ -5,7 +5,7 @@
     <!-- Diretorio do Log e Nome do LOG -->    
     <Properties>
         <Property name="baseDir">C:/Users/lprates/Desktop/projeto/logs/</Property>
-        <Property name="logName">service-whatsac.log</Property>
+        <Property name="logName">service-rest.log</Property>
     </Properties>
     
     
