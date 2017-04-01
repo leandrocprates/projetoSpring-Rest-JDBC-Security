@@ -1,4 +1,4 @@
-# Projeto utilizando Spring criando serviços Rest , JDBC NamedParameter e  Security Security com Basic Authentication.
+# Projeto utilizando Spring criando serviços Rest , JDBC NamedParameter e  Security Security com Basic Authentication  e Confihuração Por Classes .
 
 
 Para criacao deste projeto foi criada uma classe **AbstractDAO<T>** no pacote **br.com.springTeste.abstractdao** que é uma classe 
